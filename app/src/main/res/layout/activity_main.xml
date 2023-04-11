@@ -4,7 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@drawable/background">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Math Puzzles"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:textSize="@dimen/_30sdp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_700"
+            android:gravity="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/blackboard_main_menu"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="CONTINUE"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="italic"
+            android:textAlignment="center"
+            android:textSize="@dimen/_20sdp"
+            android:id="@+id/continue_text"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:text="PUZZLES"
+            android:textStyle="italic"
+            android:textSize="@dimen/_20sdp"
+            android:id="@+id/puzzles_text"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:text="BUY PRO"
+            android:textStyle="italic"
+            android:layout_margin="@dimen/_10sdp"
+            android:textSize="@dimen/_20sdp"
+            android:id="@+id/buy_text"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginLeft="@dimen/_180sdp"
+            >
+            <Button
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:backgroundTintMode="screen"
+                app:backgroundTint="@null"
+                android:background="@drawable/share_main"
+
+                android:layout_marginTop="@dimen/_10sdp"
+                android:id="@+id/share_Button"
+                ></Button>
+
+            <Button
+                android:id="@+id/Email_Button"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+
+                android:layout_marginHorizontal="@dimen/_10sdp"
+
+                android:layout_toRightOf="@id/share_Button"
+                android:background="@drawable/mail_client"
+                android:backgroundTintMode="screen"
+                app:backgroundTint="@null"></Button>
+
+        </RelativeLayout>
+    </LinearLayout>
 
 
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <corners
+                android:radius="@dimen/_10sdp"></corners>
+            <gradient
+                android:startColor="#716E6E"
+                android:centerColor="#F3ECEC"
+                android:angle="45"
+                android:endColor="#838080"></gradient>
+
+        </shape>
+    </item>
+    <item>
+
+        <bitmap
+
+            android:src="@drawable/shareus"
+
+            android:tileMode="disabled"></bitmap>
+    </item>
+
+</layer-list>
