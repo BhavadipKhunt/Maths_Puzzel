@@ -96,6 +96,11 @@
                 android:background="@drawable/mail_client"
                 android:backgroundTintMode="screen"
                 app:backgroundTint="@null"></Button>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/share_Button"
+                ></TextView>
 
         </RelativeLayout>
     </LinearLayout>
