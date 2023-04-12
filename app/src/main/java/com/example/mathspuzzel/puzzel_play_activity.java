@@ -11,7 +11,7 @@ public class puzzel_play_activity extends AppCompatActivity implements View.OnCl
 {
 Button button[]=new Button[10];
 TextView textView;
-Button delet;
+Button delet,submit;
 String str1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,8 @@ String str1;
         textView=findViewById(R.id.answer_txt);
         delet=findViewById(R.id.Delet_button);
         delet.setOnClickListener(this);
+        submit=findViewById(R.id.Submit_button);
+        submit.setOnClickListener(this);
     }
 
     @Override
@@ -100,6 +102,14 @@ String str1;
             textView.setText(""+s);
             }
         }
+        if (view.getId()==submit.getId())
+        {
+            str1= (String) textView.getText();
+            int n= Integer.parseInt(str1);
+            if(n==confing.ans)
+            {
 
+            }
+        }
     }
 }
