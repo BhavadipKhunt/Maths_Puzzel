@@ -23,7 +23,7 @@ public class Puzzel_Adapter extends BaseAdapter
 
     @Override
     public int getCount() {
-        return puzzel.length;
+        return 20;
     }
 
     @Override
