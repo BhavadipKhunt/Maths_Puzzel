@@ -6,19 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class Puzzel_Adapter extends BaseAdapter
 {
     Context context;
     int  lock;
-    int[] puzzel;
+
     ImageView textView;
 
-    public Puzzel_Adapter(Context context, int lock, int[] puzzel) {
+    public Puzzel_Adapter(Context context, int lock) {
         this.context=context;
         this.lock=lock;
-        this.puzzel=puzzel;
+
     }
 
     @Override
