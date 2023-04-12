@@ -3,5 +3,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:id="@+id/iteam_text_view"
+        android:background="@drawable/border_2"
+        android:src="@drawable/lock"
+        android:layout_margin="@dimen/_10sdp"></ImageView>
 
 </LinearLayout>

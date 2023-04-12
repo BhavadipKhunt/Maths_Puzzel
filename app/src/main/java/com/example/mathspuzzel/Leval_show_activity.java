@@ -13,5 +13,6 @@ public class Leval_show_activity extends AppCompatActivity {
         setContentView(R.layout.activity_leval_show);
         gridView=findViewById(R.id.Leval_grid_view);
         Puzzel_Adapter puzzelAdapter=new Puzzel_Adapter(Leval_show_activity.this,confing.lock,confing.puzzel);
+        gridView.setAdapter(puzzelAdapter);
     }
 }

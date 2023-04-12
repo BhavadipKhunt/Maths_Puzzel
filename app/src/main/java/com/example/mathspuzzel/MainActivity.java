@@ -61,7 +61,8 @@ Button share,email;
         }
         if (view.getId()==textView1.getId())
         {
-
+            Intent intent=new Intent(MainActivity.this,Leval_show_activity.class);
+            startActivity(intent);
         }
         if (view.getId()==textView2.getId())
         {
