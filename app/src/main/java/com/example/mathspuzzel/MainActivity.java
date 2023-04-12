@@ -66,7 +66,8 @@ Button share,email;
         }
         if (view.getId()==textView2.getId())
         {
-
+            Intent intent=new Intent(MainActivity.this,puzzel_play_activity.class);
+            startActivity(intent);
         }
         if (view.getId()==textView3.getId())
         {

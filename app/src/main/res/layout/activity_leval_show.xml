@@ -33,11 +33,13 @@
 
         android:gravity="right"
        >
-        <ImageView
+        <Button
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
-            android:src="@drawable/next"
-            ></ImageView>
+            app:backgroundTint="@null"
+            android:background="@drawable/next"
+            android:id="@+id/next_button"
+            ></Button>
     </RelativeLayout>
 
 
