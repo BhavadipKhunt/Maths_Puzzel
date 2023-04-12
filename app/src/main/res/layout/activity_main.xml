@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Math Puzzles"
+
             android:layout_marginTop="@dimen/_40sdp"
             android:layout_marginBottom="@dimen/_20sdp"
             android:textSize="@dimen/_30sdp"
@@ -71,7 +72,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100sdp"
-            android:layout_marginLeft="@dimen/_180sdp"
+            android:layout_marginLeft="@dimen/_160sdp"
             >
             <Button
                 android:layout_width="@dimen/_40sdp"
@@ -79,7 +80,7 @@
                 android:backgroundTintMode="screen"
                 app:backgroundTint="@null"
                 android:background="@drawable/share_main"
-
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:id="@+id/share_Button"
                 ></Button>
@@ -100,6 +101,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/share_Button"
+                android:text="Privecy police"
+                android:textSize="@dimen/_20sdp"
+                android:id="@+id/policy_text"
+                android:textAlignment="center"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:background="@drawable/border"
                 ></TextView>
 
         </RelativeLayout>
