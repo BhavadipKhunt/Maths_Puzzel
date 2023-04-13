@@ -48,7 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:src="@drawable/p1"/>
+            android:src="@drawable/p9"
+            android:id="@+id/imageView"/>
     </LinearLayout>
 
     <LinearLayout
@@ -103,6 +104,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/black"
                 android:layout_weight="1"
+
                 >
             <Button
                 android:layout_width="wrap_content"
@@ -110,6 +112,7 @@
                 android:text="1"
                 android:layout_weight="1"
                 android:backgroundTint="#817D7D"
+
                 android:id="@+id/btn1"/>
             <Button
                 android:layout_width="wrap_content"
@@ -117,11 +120,13 @@
                 android:layout_weight="1"
                 android:text="2"
                 android:backgroundTint="#817D7D"
+
                 android:id="@+id/btn2"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+
                 android:text="3"
                 android:backgroundTint="#817D7D"
                 android:id="@+id/btn3"/>
@@ -146,17 +151,20 @@
                 android:layout_weight="1"
                 android:text="6"
                 android:backgroundTint="#817D7D"
+
                 android:id="@+id/btn6"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="7"
+
                 android:backgroundTint="#817D7D"
                 android:id="@+id/btn7"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_weight="1"
                 android:text="8"
                 android:backgroundTint="#817D7D"
@@ -166,6 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="9"
+
                 android:backgroundTint="#817D7D"
                 android:id="@+id/btn9"/>
             <Button
@@ -173,6 +182,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="0"
+
                 android:backgroundTint="#817D7D"
                 android:id="@+id/btn0"/>
 

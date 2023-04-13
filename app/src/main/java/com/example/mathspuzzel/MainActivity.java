@@ -10,10 +10,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
 TextView textView1,textView2,textView3,textView4;
-Button share,email;
+Button share,email,buy,nothanks;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +73,23 @@ Button share,email;
         }
         if (view.getId()==textView3.getId())
         {
+            BottomSheetDialog dialog=new BottomSheetDialog(this);
+            dialog.setContentView(R.layout.buy_pro_layaout);
+            buy=dialog.findViewById(R.id.buy_button);
+            nothanks=dialog.findViewById(R.id.nothanks_button);
+            dialog.show();
+            buy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.cancel();
+                }
+            });
+            nothanks.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.cancel();
+                }
+            });
 
         }
         if (view.getId()==textView4.getId())
