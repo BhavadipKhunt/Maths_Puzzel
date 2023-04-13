@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,12 +18,12 @@ import java.util.ArrayList;
 public class puzzel_play_activity extends AppCompatActivity implements View.OnClickListener
 {
 Button button[]=new Button[10];
-TextView textView;
+TextView textView,leveltext;
 Button delet,submit;
-String str1,temp;
+String str1,temp,str;
 static int levelNo=0;
 ImageView imageView;
-String ansArr[]={"10","20","30","40","50","60","70","80","90","100","110","120","130","140","150"};
+int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
 ArrayList<String> imgArr=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,26 +35,31 @@ ArrayList<String> imgArr=new ArrayList<>();
             button[i]=findViewById(id);
             button[i].setOnClickListener(this);
         }
+        leveltext=findViewById(R.id.level_show_text);
+
         imageView=findViewById(R.id.imageView);
         textView=findViewById(R.id.answer_txt);
         delet=findViewById(R.id.Delet_button);
+       submit=findViewById(R.id.submit_button);
+       submit.setOnClickListener(this);
         delet.setOnClickListener(this);
-        submit=findViewById(R.id.Submit_button);
-        submit.setOnClickListener(this);
-        try
-        {
-            // get input stream
-            InputStream ims = getAssets().open(imgArr.get(levelNo));
-            // load image as Drawable
-                Drawable d = Drawable.createFromStream(ims, null);
-            // set image to ImageView
-            imageView.setImageDrawable(d);
-
-        }
-        catch(IOException ex)
-        {
-            return;
-        }
+        leveltext.setText("Puzzel"+(levelNo+1));
+        //
+        //       InputStream ims=null;
+//        try
+//        {
+//            // get input stream
+//             ims = getAssets().open(imgArr.get(levelNo));
+//            // load image as Drawable
+//                Drawable d = Drawable.createFromStream(ims, null);
+//            // set image to ImageView
+//            imageView.setImageDrawable(d);
+//
+//        }
+//        catch(IOException ex)
+//        {
+//            return;
+//        }
 
     }
 
@@ -82,15 +88,19 @@ ArrayList<String> imgArr=new ArrayList<>();
         }
         if (view.getId()==submit.getId())
         {
-            str1= (String) textView.getText();
-
-            if(str1==ansArr[levelNo])
+            str= String.valueOf(textView.getText());
+            int n= Integer.parseInt(str);
+            if(ansArr[levelNo]==n)
             {
                 levelNo++;
-                Intent intent =new Intent(puzzel_play_activity.this,puzzel_play_activity.class);
+                Intent intent = new Intent(puzzel_play_activity.this,Win_puzzel_activity.class);
                 intent.putExtra("levelNo",levelNo);
                 startActivity(intent);
             }
+            else
+             {
+                  Toast.makeText(this, "Wrong...", Toast.LENGTH_SHORT).show();
+             }
         }
     }
 }

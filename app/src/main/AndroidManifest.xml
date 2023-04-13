@@ -12,6 +12,9 @@
         android:theme="@style/Theme.MathsPuzzel"
         tools:targetApi="31">
         <activity
+            android:name=".Win_puzzel_activity"
+            android:exported="false" />
+        <activity
             android:name=".puzzel_play_activity"
             android:exported="false" />
         <activity

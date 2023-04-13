@@ -26,9 +26,10 @@
         android:layout_height="@dimen/_60sdp"
         android:layout_marginTop="@dimen/_7sdp"
         android:layout_weight=".7"
-        android:text="Puzzel 1"
+        android:text="Puzzel "
         android:textAlignment="center"
         android:textColor="@color/black"
+        android:id="@+id/level_show_text"
         android:textSize="@dimen/_40sdp"
         android:background="@drawable/level_board" />
 
@@ -93,7 +94,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_10sdp"
             android:layout_toRightOf="@id/Delet_button"
-            android:id="@+id/Submit_button"
+            android:id="@+id/submit_button"
             android:text="Submit"
             android:layout_marginTop="@dimen/_5sdp"
             app:backgroundTint="@null"/>

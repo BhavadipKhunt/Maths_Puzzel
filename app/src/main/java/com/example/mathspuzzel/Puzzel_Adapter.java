@@ -41,6 +41,7 @@ public class Puzzel_Adapter extends BaseAdapter
         textView=view.findViewById(R.id.iteam_text_view);
         textView.setImageResource(confing.lock);
 
+
         return view;
     }
 }

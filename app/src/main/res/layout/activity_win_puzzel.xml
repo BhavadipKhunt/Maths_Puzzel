@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".Win_puzzel_activity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/_25sdp"
+    android:textColor="@color/purple_700"
+    android:layout_marginBottom="@dimen/_20sdp"
+    android:textAlignment="center"
+    android:id="@+id/Win_solve_number"></TextView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:src="@drawable/trophy"
+        android:layout_marginBottom="@dimen/_20sdp"></ImageView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <Button
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:text="Continue"
+            android:layout_marginBottom="@dimen/_10sdp"
+        android:id="@+id/Continue_button"
+        app:backgroundTint="@null"
+        android:background="@drawable/back_button"
+        />
+    <Button
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:text="Main Menu"
+        android:id="@+id/Main_menu_button"
+        app:backgroundTint="@null"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/back_button"
+        />
+    <Button
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:text="Buy Pro"
+        android:id="@+id/Buy_pro_button"
+        app:backgroundTint="@null"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/back_button"
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Share Puzzel To Your Friend"
+            android:textAlignment="center"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp"/>
+        <Button
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/share_main"
+            app:backgroundTint="@null"></Button>
+    </LinearLayout>
+</LinearLayout>
