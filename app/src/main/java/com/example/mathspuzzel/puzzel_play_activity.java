@@ -3,6 +3,7 @@ package com.example.mathspuzzel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class puzzel_play_activity extends AppCompatActivity implements View.OnClickListener
 {
@@ -21,10 +24,15 @@ Button button[]=new Button[10];
 TextView textView,leveltext;
 Button delet,submit;
 String str1,temp,str;
-static int levelNo=0;
+
 ImageView imageView;
-int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
+List<String> arrayList = new ArrayList<>();
 ArrayList<String> imgArr=new ArrayList<>();
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    int level;
+int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,24 +51,38 @@ ArrayList<String> imgArr=new ArrayList<>();
        submit=findViewById(R.id.submit_button);
        submit.setOnClickListener(this);
         delet.setOnClickListener(this);
-        leveltext.setText("Puzzel"+(levelNo+1));
-        //
-        //       InputStream ims=null;
-//        try
-//        {
-//            // get input stream
-//             ims = getAssets().open(imgArr.get(levelNo));
-//            // load image as Drawable
-//                Drawable d = Drawable.createFromStream(ims, null);
-//            // set image to ImageView
-//            imageView.setImageDrawable(d);
-//
-//        }
-//        catch(IOException ex)
-//        {
-//            return;
-//        }
+        leveltext.setText("Puzzel"+(confing.levelNo+ 1));
 
+        level=getIntent().getIntExtra("levelNo",0);
+
+        String[] images = new String[0];
+        try {
+            images = getAssets().list("images/");
+            imgArr = new ArrayList<String>(Arrays.asList(images));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        arrayList = imgArr.subList(3,77);
+        //arrayList.addAll(arrayList);
+        //imageView.setImageResource(Integer.parseInt(imgArr.get(confing.levelNo)));
+        for (int i=0;i<arrayList.size();i++)
+        {
+            System.out.println(arrayList.get(i));
+        }
+
+        InputStream inputstream = null;
+        try {
+            inputstream = getAssets().open("images/"+arrayList.get(confing.levelNo));
+            Drawable drawable = Drawable.createFromStream(inputstream, null);
+            System.out.println("input Stream="+drawable);
+            imageView.setImageDrawable(drawable);
+            inputstream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+       // imageView.setImageResource();
     }
 
     @Override
@@ -90,11 +112,11 @@ ArrayList<String> imgArr=new ArrayList<>();
         {
             str= String.valueOf(textView.getText());
             int n= Integer.parseInt(str);
-            if(ansArr[levelNo]==n)
+            if(ansArr[confing.levelNo]==n)
             {
-                levelNo++;
+                confing.levelNo++;
                 Intent intent = new Intent(puzzel_play_activity.this,Win_puzzel_activity.class);
-                intent.putExtra("levelNo",levelNo);
+                intent.putExtra("levelNo",confing.levelNo);
                 startActivity(intent);
             }
             else

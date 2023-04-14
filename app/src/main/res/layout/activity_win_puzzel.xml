@@ -70,6 +70,7 @@
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
             android:background="@drawable/share_main"
+            android:id="@+id/share_button_1"
             app:backgroundTint="@null"></Button>
     </LinearLayout>
 </LinearLayout>

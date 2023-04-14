@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 public class Win_puzzel_activity extends AppCompatActivity implements View.OnClickListener
 {
 TextView textView;
-Button continu,mainmenu,buypro,buy,nothanks;
+Button continu,mainmenu,buypro,buy,nothanks,share1;
 int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +21,12 @@ int n;
         setContentView(R.layout.activity_win_puzzel);
         textView=findViewById(R.id.Win_solve_number);
         n=getIntent().getIntExtra("levelNo",0);
-        textView.setText("Puzzel " +n+"Solved");
+        textView.setText("Puzzel "+ n +"Solved");
         continu=findViewById(R.id.Continue_button);
         mainmenu=findViewById(R.id.Main_menu_button);
         buypro=findViewById(R.id.Buy_pro_button);
+        share1=findViewById(R.id.share_button_1);
+        share1.setOnClickListener(this);
         continu.setOnClickListener(this);
         mainmenu.setOnClickListener(this);
         buypro.setOnClickListener(this);
@@ -61,6 +63,10 @@ int n;
                     dialog.cancel();
                 }
             });
+        }
+        if (view.getId()==share1.getId())
+        {
+
         }
     }
 }
