@@ -1,10 +1,12 @@
 package com.example.mathspuzzel;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,7 +53,7 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
        submit=findViewById(R.id.submit_button);
        submit.setOnClickListener(this);
         delet.setOnClickListener(this);
-        leveltext.setText("Puzzel"+(confing.levelNo+ 1));
+        leveltext.setText("Puzzel "+(confing.levelNo+ 1));
 
         level=getIntent().getIntExtra("levelNo",0);
 
@@ -121,7 +123,9 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
             }
             else
              {
-                  Toast.makeText(this, "Wrong...", Toast.LENGTH_SHORT).show();
+                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                 builder.setMessage("Wrong....");
+                 builder.show();
              }
         }
     }

@@ -21,7 +21,7 @@ int n;
         setContentView(R.layout.activity_win_puzzel);
         textView=findViewById(R.id.Win_solve_number);
         n=getIntent().getIntExtra("levelNo",0);
-        textView.setText("Puzzel "+ n +"Solved");
+        textView.setText("Puzzel "+ n +" Solved");
         continu=findViewById(R.id.Continue_button);
         mainmenu=findViewById(R.id.Main_menu_button);
         buypro=findViewById(R.id.Buy_pro_button);
