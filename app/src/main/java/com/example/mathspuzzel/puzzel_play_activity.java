@@ -53,10 +53,16 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
        submit=findViewById(R.id.submit_button);
        submit.setOnClickListener(this);
         delet.setOnClickListener(this);
-        leveltext.setText("Puzzel "+(confing.levelNo+ 1));
 
-        level=getIntent().getIntExtra("levelNo",0);
-
+        preferences=getSharedPreferences("mypre",MODE_PRIVATE);
+        editor=preferences.edit();
+        System.out.println(getIntent().getExtras()==null);
+        if(getIntent().getExtras()==null)
+        {
+            level=preferences.getInt("level",0);
+            System.out.println("---"+level);
+        }
+        leveltext.setText("Puzzel "+(level+ 1));
         String[] images = new String[0];
         try {
             images = getAssets().list("images/");
@@ -68,10 +74,6 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
         arrayList = imgArr.subList(3,77);
         //arrayList.addAll(arrayList);
         //imageView.setImageResource(Integer.parseInt(imgArr.get(confing.levelNo)));
-        for (int i=0;i<arrayList.size();i++)
-        {
-            System.out.println(arrayList.get(i));
-        }
 
         InputStream inputstream = null;
         try {
@@ -114,11 +116,16 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
         {
             str= String.valueOf(textView.getText());
             int n= Integer.parseInt(str);
-            if(ansArr[confing.levelNo]==n)
+            if(ansArr[level]==n)
             {
-                confing.levelNo++;
+
+                level++;
+                editor.putInt("lastlevel",level);
+                editor.putString("levelstatus",level +"win");
+                System.out.println(level);
+                editor.commit();
                 Intent intent = new Intent(puzzel_play_activity.this,Win_puzzel_activity.class);
-                intent.putExtra("levelNo",confing.levelNo);
+                intent.putExtra("level",level);
                 startActivity(intent);
             }
             else

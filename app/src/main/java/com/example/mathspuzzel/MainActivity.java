@@ -3,6 +3,7 @@ package com.example.mathspuzzel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 {
 TextView textView1,textView2,textView3,textView4;
 Button share,email,buy,nothanks;
+int lastlevel;
+SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,8 @@ Button share,email,buy,nothanks;
         textView2=findViewById(R.id.continue_text);
         textView3=findViewById(R.id.buy_text);
         textView4=findViewById(R.id.policy_text);
+        preferences=getSharedPreferences("mypre",MODE_PRIVATE);
+        lastlevel=preferences.getInt("lastlevel",0);
         Typeface typeface= Typeface.createFromAsset(MainActivity.this.getAssets(),confing.font);
 
         textView1.setTypeface(typeface );
@@ -69,6 +74,7 @@ Button share,email,buy,nothanks;
         if (view.getId()==textView2.getId())
         {
             Intent intent=new Intent(MainActivity.this,puzzel_play_activity.class);
+            intent.putExtra("level",lastlevel+1);
             startActivity(intent);
         }
         if (view.getId()==textView3.getId())
