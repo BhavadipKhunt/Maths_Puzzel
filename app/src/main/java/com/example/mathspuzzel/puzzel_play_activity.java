@@ -34,6 +34,7 @@ ArrayList<String> imgArr=new ArrayList<>();
     SharedPreferences.Editor editor;
     int level;
 int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
+    private int lastLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,19 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
 
         preferences=getSharedPreferences("mypre",MODE_PRIVATE);
         editor=preferences.edit();
+        lastLevel=preferences.getInt("lastlevel",0);
+        System.out.println(getIntent().getExtras()==null);
 
-        if(getIntent().getExtras()==null)
-        {
-            level=preferences.getInt("level",0);
+        if(getIntent().getExtras()==null) {
+            level = 0;
         }
-        leveltext.setText("Puzzel "+(level+ 1));
+        else
+        {
+            level=getIntent().getIntExtra("level",0);
+            System.out.println("---"+level);
+        }
+
+        leveltext.setText("Puzzel "+(level));
         String[] images = new String[0];
         try {
             images = getAssets().list("images/");
@@ -71,9 +79,12 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
             e.printStackTrace();
         }
         arrayList = imgArr.subList(3,77);
+        //arrayList.addAll(arrayList);
+        //imageView.setImageResource(Integer.parseInt(imgArr.get(confing.levelNo)));
+
         InputStream inputstream = null;
         try {
-            inputstream = getAssets().open("images/"+arrayList.get(confing.levelNo));
+            inputstream = getAssets().open("images/"+arrayList.get(lastLevel));
             Drawable drawable = Drawable.createFromStream(inputstream, null);
             System.out.println("input Stream="+drawable);
             imageView.setImageDrawable(drawable);
@@ -81,6 +92,8 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+       // imageView.setImageResource();
     }
 
     @Override
@@ -110,9 +123,8 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
         {
             str= String.valueOf(textView.getText());
             int n= Integer.parseInt(str);
-            if(ansArr[level]==n)
+            if(ansArr[level-1]==n)
             {
-
                 level++;
                 editor.putInt("lastlevel",level);
                 editor.putString("levelstatus",level +"win");
@@ -121,6 +133,7 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
                 Intent intent = new Intent(puzzel_play_activity.this,Win_puzzel_activity.class);
                 intent.putExtra("level",level);
                 startActivity(intent);
+                finish();
             }
             else
              {
