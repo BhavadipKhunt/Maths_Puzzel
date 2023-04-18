@@ -24,7 +24,7 @@ public class puzzel_play_activity extends AppCompatActivity implements View.OnCl
 {
 Button button[]=new Button[10];
 TextView textView,leveltext;
-Button delet,submit;
+Button delet,submit,skip;
 String str1,temp,str;
 
 ImageView imageView;
@@ -32,9 +32,8 @@ List<String> arrayList = new ArrayList<>();
 ArrayList<String> imgArr=new ArrayList<>();
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    int level;
+    int level,lastlevel;
 int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
-    private int lastLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,8 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
             button[i].setOnClickListener(this);
         }
         leveltext=findViewById(R.id.level_show_text);
-
+        skip=findViewById(R.id.Skip_Button);
+        skip.setOnClickListener(this);
         imageView=findViewById(R.id.imageView);
         textView=findViewById(R.id.answer_txt);
         delet=findViewById(R.id.Delet_button);
@@ -57,19 +57,12 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
 
         preferences=getSharedPreferences("mypre",MODE_PRIVATE);
         editor=preferences.edit();
-        lastLevel=preferences.getInt("lastlevel",0);
-        System.out.println(getIntent().getExtras()==null);
-
-        if(getIntent().getExtras()==null) {
-            level = 0;
-        }
-        else
+        lastlevel=preferences.getInt("lastlevel",0);
+        if(getIntent().getExtras()!=null)
         {
             level=getIntent().getIntExtra("level",0);
-            System.out.println("---"+level);
         }
-
-        leveltext.setText("Puzzel "+(level));
+        leveltext.setText("Puzzel "+(level+1));
         String[] images = new String[0];
         try {
             images = getAssets().list("images/");
@@ -79,11 +72,9 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
             e.printStackTrace();
         }
         arrayList = imgArr.subList(3,77);
-
-
         InputStream inputstream = null;
         try {
-            inputstream = getAssets().open("images/"+arrayList.get(lastLevel));
+            inputstream = getAssets().open("images/"+arrayList.get(lastlevel));
             Drawable drawable = Drawable.createFromStream(inputstream, null);
             System.out.println("input Stream="+drawable);
             imageView.setImageDrawable(drawable);
@@ -91,8 +82,6 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override
@@ -122,17 +111,17 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
         {
             str= String.valueOf(textView.getText());
             int n= Integer.parseInt(str);
-            if(ansArr[level-1]==n)
+            if(ansArr[level]==n)
             {
+
                 level++;
                 editor.putInt("lastlevel",level);
-                editor.putString("levelstatus",level +"win");
+                editor.putString("levelstatus"+level ,"win");
                 System.out.println(level);
                 editor.commit();
                 Intent intent = new Intent(puzzel_play_activity.this,Win_puzzel_activity.class);
                 intent.putExtra("level",level);
                 startActivity(intent);
-                finish();
             }
             else
              {
@@ -140,6 +129,17 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
                  builder.setMessage("Wrong....");
                  builder.show();
              }
+        }
+        if(view.getId()==skip.getId())
+        {
+            level++;
+            editor.putInt("lastlevel",level);
+            editor.putString("levelstatus"+level ,"skip");
+            System.out.println(level);
+            editor.commit();
+            Intent intent = new Intent(puzzel_play_activity.this,puzzel_play_activity.class);
+            intent.putExtra("level",level);
+            startActivity(intent);
         }
     }
 }

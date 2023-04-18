@@ -3,6 +3,7 @@ package com.example.mathspuzzel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ public class Leval_show_activity extends AppCompatActivity {
     GridView gridView;
     Button button;
      TextView textView;
+     SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,8 @@ public class Leval_show_activity extends AppCompatActivity {
 
         button=findViewById(R.id.next_button);
 
-        Puzzel_Adapter puzzelAdapter=new Puzzel_Adapter(Leval_show_activity.this,confing.lock);
+        preferences=getSharedPreferences("mypre",MODE_PRIVATE);
+        Puzzel_Adapter puzzelAdapter=new Puzzel_Adapter(Leval_show_activity.this,confing.lock,preferences);
         gridView.setAdapter(puzzelAdapter);
         Typeface typeface= Typeface.createFromAsset(Leval_show_activity.this.getAssets(),confing.font);
         textView.setTypeface(typeface);
@@ -34,6 +37,7 @@ public class Leval_show_activity extends AppCompatActivity {
             public void onClick(View view) {
 
                     Intent intent = new Intent(Leval_show_activity.this, Leval_show_activity.class);
+
                     startActivity(intent);
 
             }
