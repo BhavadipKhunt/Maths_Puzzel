@@ -56,11 +56,10 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
 
         preferences=getSharedPreferences("mypre",MODE_PRIVATE);
         editor=preferences.edit();
-        System.out.println(getIntent().getExtras()==null);
+
         if(getIntent().getExtras()==null)
         {
             level=preferences.getInt("level",0);
-            System.out.println("---"+level);
         }
         leveltext.setText("Puzzel "+(level+ 1));
         String[] images = new String[0];
@@ -72,9 +71,6 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
             e.printStackTrace();
         }
         arrayList = imgArr.subList(3,77);
-        //arrayList.addAll(arrayList);
-        //imageView.setImageResource(Integer.parseInt(imgArr.get(confing.levelNo)));
-
         InputStream inputstream = null;
         try {
             inputstream = getAssets().open("images/"+arrayList.get(confing.levelNo));
@@ -85,8 +81,6 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-       // imageView.setImageResource();
     }
 
     @Override
