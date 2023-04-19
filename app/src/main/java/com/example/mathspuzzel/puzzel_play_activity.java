@@ -74,7 +74,7 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
         arrayList = imgArr.subList(3,77);
         InputStream inputstream = null;
         try {
-            inputstream = getAssets().open("images/"+arrayList.get(lastlevel));
+            inputstream = getAssets().open("images/"+arrayList.get(level));
             Drawable drawable = Drawable.createFromStream(inputstream, null);
             System.out.println("input Stream="+drawable);
             imageView.setImageDrawable(drawable);
@@ -114,11 +114,12 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
             if(ansArr[level]==n)
             {
 
-                level++;
+
                 editor.putInt("lastlevel",level);
                 editor.putString("levelstatus"+level ,"win");
-                System.out.println(level);
+
                 editor.commit();
+
                 Intent intent = new Intent(puzzel_play_activity.this,Win_puzzel_activity.class);
                 intent.putExtra("level",level);
                 startActivity(intent);
@@ -132,13 +133,13 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
         }
         if(view.getId()==skip.getId())
         {
-            level++;
+
             editor.putInt("lastlevel",level);
             editor.putString("levelstatus"+level ,"skip");
             System.out.println(level);
             editor.commit();
             Intent intent = new Intent(puzzel_play_activity.this,puzzel_play_activity.class);
-            intent.putExtra("level",level);
+            intent.putExtra("level",(level+1));
             startActivity(intent);
         }
     }

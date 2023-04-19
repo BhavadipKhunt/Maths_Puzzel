@@ -1,5 +1,6 @@
 package com.example.mathspuzzel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 
 public class Puzzel_Adapter extends BaseAdapter
 {
-    Context context;
+    Activity context;
     int  lock;
 
     ImageView imageView;
@@ -22,7 +23,7 @@ public class Puzzel_Adapter extends BaseAdapter
     SharedPreferences preferences;
 
 
-    public Puzzel_Adapter(Context context, int lock, SharedPreferences preferences) {
+    public Puzzel_Adapter(Activity context, int lock, SharedPreferences preferences) {
         this.context=context;
         this.lock=lock;
         this.preferences=preferences;
@@ -55,26 +56,28 @@ public class Puzzel_Adapter extends BaseAdapter
 
         int lastlevel = preferences.getInt("lastlevel",-1);
         String status= preferences.getString("levelstatus"+i,"pending");
-            if (status.equals("win")) {
+
+            if (status.equals("win"))
+            {
                 imageView.setImageResource(R.drawable.tick);
-                textView.setText("" + (i + 1));
+                textView.setText("" + (i+1));
                 textView.setVisibility(View.VISIBLE);
             }
 
 
-            if (status.equals("skip") || i == lastlevel ) {
+            if (status.equals("skip") || i == lastlevel+1) {
                 imageView.setImageResource(0);
-                textView.setText("" + (i + 1));
+                textView.setText("" + (i+1));
                 textView.setVisibility(View.VISIBLE);
             }
-            if (status.equals("win") || status.equals("skip") || i == lastlevel ) {
+            if (status.equals("win") || status.equals("skip") || i == lastlevel+1) {
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(context, puzzel_play_activity.class);
                         intent.putExtra("level", i);
                         context.startActivity(intent);
-
+                        context.finish();
 
                     }
                 });
