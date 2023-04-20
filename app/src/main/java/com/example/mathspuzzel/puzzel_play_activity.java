@@ -58,7 +58,7 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
         preferences=getSharedPreferences("mypre",MODE_PRIVATE);
         editor=preferences.edit();
         lastlevel=preferences.getInt("lastlevel",0);
-        if(getIntent().getExtras()!=null)
+        if(getIntent().getExtras() != null)
         {
             level=getIntent().getIntExtra("level",0);
         }
@@ -123,12 +123,16 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
                 Intent intent = new Intent(puzzel_play_activity.this,Win_puzzel_activity.class);
                 intent.putExtra("level",level);
                 startActivity(intent);
+                finish();
             }
             else
              {
-                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                 builder.setMessage("Wrong....");
-                 builder.show();
+//                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                 builder.setMessage("Wrong....");
+//                 builder.show();
+                 Toast toast=new Toast(this);
+                 toast.setText("Wrong....");
+                 toast.show();
              }
         }
         if(view.getId()==skip.getId())

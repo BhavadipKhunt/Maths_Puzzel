@@ -26,7 +26,7 @@ public class Leval_show_activity extends AppCompatActivity {
         button=findViewById(R.id.next_button);
 
         preferences=getSharedPreferences("mypre",MODE_PRIVATE);
-        Puzzel_Adapter puzzelAdapter=new Puzzel_Adapter(Leval_show_activity.this,confing.lock,preferences);
+        Puzzel_Adapter puzzelAdapter=new Puzzel_Adapter(Leval_show_activity.this,confing.lock);
         gridView.setAdapter(puzzelAdapter);
         Typeface typeface= Typeface.createFromAsset(Leval_show_activity.this.getAssets(),confing.font);
         textView.setTypeface(typeface);

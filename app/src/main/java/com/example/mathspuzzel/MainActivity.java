@@ -29,7 +29,7 @@ SharedPreferences preferences;
         textView3=findViewById(R.id.buy_text);
         textView4=findViewById(R.id.policy_text);
         preferences=getSharedPreferences("mypre",MODE_PRIVATE);
-        lastlevel=preferences.getInt("lastlevel",0);
+        lastlevel=preferences.getInt("lastlevel",-1);
         Typeface typeface= Typeface.createFromAsset(MainActivity.this.getAssets(),confing.font);
 
         textView1.setTypeface(typeface );
@@ -75,7 +75,7 @@ SharedPreferences preferences;
         if (view.getId()==textView2.getId())
         {
             Intent intent=new Intent(MainActivity.this,puzzel_play_activity.class);
-            intent.putExtra("level",lastlevel);
+            intent.putExtra("level",lastlevel+1);
             startActivity(intent);
 
         }

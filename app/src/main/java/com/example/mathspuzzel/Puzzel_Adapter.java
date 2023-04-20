@@ -1,7 +1,8 @@
 package com.example.mathspuzzel;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -9,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,15 +23,15 @@ public class Puzzel_Adapter extends BaseAdapter
     SharedPreferences preferences;
 
 
-    public Puzzel_Adapter(Activity context, int lock, SharedPreferences preferences) {
+    public Puzzel_Adapter(Activity context, int lock) {
         this.context=context;
         this.lock=lock;
-        this.preferences=preferences;
+        this.preferences= context.getSharedPreferences("mypre",MODE_PRIVATE);
     }
 
     @Override
     public int getCount() {
-        return 20;
+        return 24;
     }
 
     @Override
@@ -65,11 +65,16 @@ public class Puzzel_Adapter extends BaseAdapter
             }
 
 
-            if (status.equals("skip") || i == lastlevel+1) {
+            if (status.equals("skip")||lastlevel+1==i) {
                 imageView.setImageResource(0);
                 textView.setText("" + (i+1));
                 textView.setVisibility(View.VISIBLE);
             }
+//            else if()
+//            if(lastlevel+1==i)
+//            {
+//
+//            }
             if (status.equals("win") || status.equals("skip") || i == lastlevel+1) {
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
