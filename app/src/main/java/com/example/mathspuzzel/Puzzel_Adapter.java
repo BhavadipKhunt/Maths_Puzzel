@@ -3,6 +3,7 @@ package com.example.mathspuzzel;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -26,7 +27,7 @@ public class Puzzel_Adapter extends BaseAdapter
     public Puzzel_Adapter(Activity context, int lock) {
         this.context=context;
         this.lock=lock;
-        this.preferences= context.getSharedPreferences("mypre",MODE_PRIVATE);
+        this.preferences= context.getSharedPreferences("mypre", MODE_PRIVATE);
     }
 
     @Override
@@ -54,40 +55,64 @@ public class Puzzel_Adapter extends BaseAdapter
         textView.setTypeface(typeface);
 
 
-        int lastlevel = preferences.getInt("lastlevel",-1);
-        String status= preferences.getString("levelstatus"+i,"pending");
 
-            if (status.equals("win"))
-            {
+if (confing.cnt==0) {
+    int lastlevel = preferences.getInt("lastlevel",-1);
+    String status= preferences.getString("levelstatus"+i,"pending");
+    if (status.equals("win")) {
+        imageView.setImageResource(R.drawable.tick);
+        textView.setText("" + (i + 1));
+        textView.setVisibility(View.VISIBLE);
+    }
+
+
+    if (status.equals("skip") || i == lastlevel + 1) {
+        imageView.setImageResource(0);
+        textView.setText("" + (i + 1));
+        textView.setVisibility(View.VISIBLE);
+    }
+    if (status.equals("win") || status.equals("skip") || i == lastlevel + 1) {
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, puzzel_play_activity.class);
+                intent.putExtra("level", i);
+                context.startActivity(intent);
+             //   context.finish();
+
+            }
+        });
+    }
+}
+        if (confing.cnt==1)
+        {
+            int lastlevel = preferences.getInt("lastlevel",-1);
+            String status= preferences.getString("levelstatus"+(i+24),"pending");
+            if (status.equals("win")) {
                 imageView.setImageResource(R.drawable.tick);
-                textView.setText("" + (i+1));
+                textView.setText("" + (i + 1+24));
                 textView.setVisibility(View.VISIBLE);
             }
 
 
-            if (status.equals("skip")||lastlevel+1==i) {
+            if (status.equals("skip") || i+24 == lastlevel +  1) {
                 imageView.setImageResource(0);
-                textView.setText("" + (i+1));
+                textView.setText("" + (i + 1+24));
                 textView.setVisibility(View.VISIBLE);
             }
-//            else if()
-//            if(lastlevel+1==i)
-//            {
-//
-//            }
-            if (status.equals("win") || status.equals("skip") || i == lastlevel+1) {
+            if (status.equals("win") || status.equals("skip") || i+24 == lastlevel +1) {
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(context, puzzel_play_activity.class);
-                        intent.putExtra("level", i);
+                        intent.putExtra("level", i+24);
                         context.startActivity(intent);
-                        context.finish();
+                       // context.finish();
 
                     }
                 });
             }
-
+        }
         return view;
     }
 }

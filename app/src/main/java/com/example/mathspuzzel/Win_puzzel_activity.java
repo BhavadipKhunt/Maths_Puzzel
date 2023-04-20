@@ -47,9 +47,17 @@ int n;
     public void onClick(View view) {
         if(view.getId()==continu.getId())
         {
-            Intent intent=new Intent(Win_puzzel_activity.this,puzzel_play_activity.class);
-            intent.putExtra("level",(n+1));
-            startActivity(intent);
+            if (confing.cnt==0) {
+                Intent intent = new Intent(Win_puzzel_activity.this, puzzel_play_activity.class);
+                intent.putExtra("level", (n + 1));
+                startActivity(intent);
+            }
+            if (confing.cnt==1)
+            {
+                Intent intent = new Intent(Win_puzzel_activity.this, puzzel_play_activity.class);
+                intent.putExtra("level", (n + 25));
+                startActivity(intent);
+            }
             finish();
         }
         if(view.getId()==mainmenu.getId())

@@ -28,20 +28,30 @@
         android:numColumns="4"
         android:id="@+id/Leval_grid_view"/>
     </LinearLayout>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:gravity="right"
+
        >
         <Button
+
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             app:backgroundTint="@null"
             android:background="@drawable/next"
-            android:id="@+id/next_button"
+            android:layout_alignParentRight="true"             android:id="@+id/next_button"
             ></Button>
-    </LinearLayout>
+        <Button
+
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            app:backgroundTint="@null"
+            android:background="@drawable/back"
+            android:visibility="invisible"
+                         android:id="@+id/back_button"
+            ></Button>
+    </RelativeLayout>
 
 
 </LinearLayout>

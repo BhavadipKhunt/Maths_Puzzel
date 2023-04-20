@@ -33,7 +33,7 @@ ArrayList<String> imgArr=new ArrayList<>();
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     int level,lastlevel;
-int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
+int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,201,202,203,204,205,206,207,208,209,210,211,212};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +145,7 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150};
             Intent intent = new Intent(puzzel_play_activity.this,puzzel_play_activity.class);
             intent.putExtra("level",(level+1));
             startActivity(intent);
+            finish();
         }
     }
 }
