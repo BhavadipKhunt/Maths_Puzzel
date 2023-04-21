@@ -33,6 +33,7 @@ ArrayList<String> imgArr=new ArrayList<>();
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     int level,lastlevel;
+    static int sec_atmpt_lastLevel=0;
 int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,201,202,203,204,205,206,207,208,209,210,211,212};
 
     @Override
@@ -51,17 +52,22 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190
         imageView=findViewById(R.id.imageView);
         textView=findViewById(R.id.answer_txt);
         delet=findViewById(R.id.Delet_button);
-       submit=findViewById(R.id.submit_button);
-       submit.setOnClickListener(this);
+        submit=findViewById(R.id.submit_button);
+        submit.setOnClickListener(this);
         delet.setOnClickListener(this);
 
         preferences=getSharedPreferences("mypre",MODE_PRIVATE);
         editor=preferences.edit();
         lastlevel=preferences.getInt("lastlevel",0);
+        System.out.println(".........."+lastlevel);
         if(getIntent().getExtras() != null)
         {
             level=getIntent().getIntExtra("level",0);
+
         }
+        System.out.println("level"+level);
+        sec_atmpt_lastLevel=getIntent().getIntExtra("SecondAttempt",0);
+
         leveltext.setText("Puzzel "+(level+1));
         String[] images = new String[0];
         try {
@@ -107,34 +113,50 @@ int ansArr[]={10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190
             textView.setText(""+s);
             }
         }
-        if (view.getId()==submit.getId())
-        {
-            str= String.valueOf(textView.getText());
-            int n= Integer.parseInt(str);
-            if(ansArr[level]==n)
-            {
-
-
-                editor.putInt("lastlevel",level);
-                editor.putString("levelstatus"+level ,"win");
-
-                editor.commit();
-
-                Intent intent = new Intent(puzzel_play_activity.this,Win_puzzel_activity.class);
-                intent.putExtra("level",level);
-                startActivity(intent);
-                finish();
-            }
-            else
-             {
+        if (view.getId()==submit.getId()) {
+            str = String.valueOf(textView.getText());
+            int n = Integer.parseInt(str);
+            if (lastlevel > level) {
+                if (ansArr[level] == n) {
+                    editor.putInt("lastlevel", lastlevel);
+                    editor.putString("levelstatus" + level, "win");
+                    editor.commit();
+                    Intent intent = new Intent(puzzel_play_activity.this, Win_puzzel_activity.class);
+                    intent.putExtra("level", level);
+                    startActivity(intent);
+                    finish();
+                } else {
 //                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //                 builder.setMessage("Wrong....");
 //                 builder.show();
-                 Toast toast=new Toast(this);
-                 toast.setText("Wrong....");
-                 toast.show();
-             }
+                    Toast toast = new Toast(this);
+                    toast.setText("Wrong....");
+                    toast.show();
+                }
+
+            }
+            else
+            {
+                if (ansArr[level] == n) {
+                    editor.putInt("lastlevel", level);
+                    editor.putString("levelstatus" + level, "win");
+                    editor.commit();
+                    Intent intent = new Intent(puzzel_play_activity.this, Win_puzzel_activity.class);
+                    intent.putExtra("level", level);
+                    startActivity(intent);
+                    finish();
+                } else {
+//                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                 builder.setMessage("Wrong....");
+//                 builder.show();
+                    Toast toast = new Toast(this);
+                    toast.setText("Wrong....");
+                    toast.show();
+                }
+
+            }
         }
+        else
         if(view.getId()==skip.getId())
         {
 

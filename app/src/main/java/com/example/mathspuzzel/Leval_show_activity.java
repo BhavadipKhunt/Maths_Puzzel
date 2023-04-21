@@ -48,12 +48,13 @@ public class Leval_show_activity extends AppCompatActivity {
 
 
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View view)
+            {
 
                     Intent intent = new Intent(Leval_show_activity.this, Leval_show_activity.class);
                     confing.cnt++;
                     startActivity(intent);
+                    finish();
 
             }
         });

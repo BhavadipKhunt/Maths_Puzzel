@@ -63,10 +63,7 @@ if (confing.cnt==0) {
         imageView.setImageResource(R.drawable.tick);
         textView.setText("" + (i + 1));
         textView.setVisibility(View.VISIBLE);
-    }
-
-
-    if (status.equals("skip") || i == lastlevel + 1) {
+    }else if (status.equals("skip") || i == lastlevel + 1) {
         imageView.setImageResource(0);
         textView.setText("" + (i + 1));
         textView.setVisibility(View.VISIBLE);
@@ -76,9 +73,10 @@ if (confing.cnt==0) {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, puzzel_play_activity.class);
-                intent.putExtra("level", i);
+                //intent.putExtra("SecondAttempt", i);
+                intent.putExtra("level",i);
                 context.startActivity(intent);
-             //   context.finish();
+               //context.finish();
 
             }
         });
@@ -92,10 +90,7 @@ if (confing.cnt==0) {
                 imageView.setImageResource(R.drawable.tick);
                 textView.setText("" + (i + 1+24));
                 textView.setVisibility(View.VISIBLE);
-            }
-
-
-            if (status.equals("skip") || i+24 == lastlevel +  1) {
+            }else if (status.equals("skip") || i+24 == lastlevel +  1) {
                 imageView.setImageResource(0);
                 textView.setText("" + (i + 1+24));
                 textView.setVisibility(View.VISIBLE);
@@ -107,7 +102,7 @@ if (confing.cnt==0) {
                         Intent intent = new Intent(context, puzzel_play_activity.class);
                         intent.putExtra("level", i+24);
                         context.startActivity(intent);
-                       // context.finish();
+                        context.finish();
 
                     }
                 });
