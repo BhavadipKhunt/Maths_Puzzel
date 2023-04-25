@@ -33,6 +33,7 @@ public class Leval_show_activity extends AppCompatActivity {
         if (confing.cnt==1)
         {
             back.setVisibility(View.VISIBLE);
+            button.setVisibility(View.GONE);
             back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
